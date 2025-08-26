@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital Data Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+    h1 { text-align: center; color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #fff; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+    th { background-color: #007BFF; color: white; }
+    tr:nth-child(even) { background-color: #f2f2f2; }
+    .chart-container { width: 90%; margin: 40px auto; }
+  </style>
+</head>
+<body>
+  <h1>Hospital Data Dashboard</h1>
+  
+  <div class="chart-container">
+    <canvas id="treatmentChart"></canvas>
+  </div>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Patient ID</th>
+        <th>Patient Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Contact No</th>
+        <th>Department</th>
+        <th>Doctor Name</th>
+        <th>Admission Date</th>
+        <th>Discharge Date</th>
+        <th>Diagnosis</th>
+        <th>Treatment Cost</th>
+        <th>Payment Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>P001</td><td>Patient 1</td><td>51</td><td>Male</td><td>9884176792</td><td>Neurology</td><td>Dr. S. Iyer</td><td>2025-07-20</td><td>2025-07-26</td><td>Pregnancy Care</td><td>238078</td><td>Pending</td></tr>
+      <tr><td>P002</td><td>Patient 2</td><td>27</td><td>Male</td><td>9886084000</td><td>Oncology</td><td>Dr. P. Rao</td><td>2025-07-07</td><td>2025-07-16</td><td>Migraine</td><td>173644</td><td>Pending</td></tr>
+      <tr><td>P003</td><td>Patient 3</td><td>25</td><td>Male</td><td>9893523713</td><td>Gynecology</td><td>Dr. S. Krishnan</td><td>2025-07-17</td><td>2025-07-21</td><td>Skin Allergy</td><td>104690</td><td>Pending</td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    const ctx = document.getElementById('treatmentChart').getContext('2d');
+    const treatmentChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['P001', 'P002', 'P003'],
+        datasets: [{
+          label: 'Treatment Cost',
+          data: [238078, 173644, 104690],
+          backgroundColor: ['#4CAF50', '#2196F3', '#FF9800']
+        }]
+      },
+      options: { responsive: true, plugins: { legend: { display: true } } }
+    });
+  </script>
+</body>
+</html>
